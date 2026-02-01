@@ -22,6 +22,7 @@ The JSON response must follow this exact structure:
   "author": "Author's full name",
   "publishYear": "Year published (e.g., '2018')",
   "genre": "Genre/category (e.g., 'Self-Help / Personal Development')",
+  "pageCount": "Approximate page count as a number (e.g., 320)",
   "briefDescription": "A 2-3 sentence elevator pitch of what the book is about",
   "mainPoints": [
     {
@@ -32,10 +33,18 @@ The JSON response must follow this exact structure:
   "callToAction": "The book's core message — what the author wants the reader to DO or CHANGE after reading",
   "conclusion": "A 3-5 sentence summary of the book's conclusion and lasting message",
   "targetAudience": "Who this book is best suited for",
-  "notableQuote": "One well-known or representative quote from the book (if available, otherwise use an empty string)"
+  "notableQuote": "One well-known or representative quote from the book (if available, otherwise use an empty string)",
+  "similarBooks": [
+    {
+      "title": "Title of a similar book",
+      "author": "Author of the similar book",
+      "reason": "One sentence explaining why this book is similar or complementary"
+    }
+  ]
 }
 
-Generate 5-8 main points per book. Be thorough but concise.`;
+Generate 5-8 main points per book. Be thorough but concise.
+For similarBooks, recommend 3-4 books that readers who enjoyed this book would also like. Choose books with similar themes, writing styles, or that complement the main book's ideas.`;
 
 // Helper function to strip citation tags from text
 function stripCitations(text) {

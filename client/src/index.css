@@ -8,7 +8,12 @@
   }
 
   body {
-    @apply bg-background text-primary font-sans antialiased;
+    @apply text-primary font-sans antialiased;
+    background-image: url('/images/library-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 }
 
@@ -25,19 +30,34 @@
            shadow-md hover:shadow-lg inline-flex items-center gap-2;
   }
 
+  .btn-audible {
+    @apply bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg
+           transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]
+           shadow-md hover:shadow-lg inline-flex items-center gap-2;
+  }
+
+  .btn-share {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200
+           transform hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2;
+  }
+
   .card {
-    @apply bg-white rounded-xl shadow-sm p-6 md:p-8;
+    @apply bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-6 md:p-8;
   }
 
   .input-field {
     @apply w-full px-4 py-3 border border-gray-200 rounded-lg
            focus:ring-2 focus:ring-accent focus:border-transparent
            transition-all duration-200 outline-none
-           text-primary placeholder:text-gray-400;
+           text-primary placeholder:text-gray-400 bg-white;
   }
 
   .section-divider {
-    @apply border-t border-gray-100 my-8;
+    @apply border-t border-gray-200 my-8;
+  }
+
+  .glass-header {
+    @apply bg-white/90 backdrop-blur-md rounded-2xl shadow-lg p-6 md:p-8 mb-8;
   }
 }
 
@@ -47,7 +67,7 @@
   }
 }
 
-/* Print styles */
+/* Print and PDF export styles */
 @media print {
   .no-print {
     display: none !important;
@@ -55,12 +75,40 @@
 
   body {
     background: white;
+    background-image: none;
   }
 
   .card {
     box-shadow: none;
     border: 1px solid #e5e5e5;
+    background: white;
   }
+}
+
+/* PDF page break prevention */
+section {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+blockquote {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.flex.gap-4 {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+h2, h3, h4 {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+p {
+  orphans: 3;
+  widows: 3;
 }
 
 /* Loading animation */
